@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+}
+
+java {
+    withSourcesJar()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    api 'com.jagrosh:jda-utilities:3.0.5'
+    api 'net.dv8tion:JDA:4.2.0_225'
+}
