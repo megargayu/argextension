@@ -1,0 +1,45 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+java {
+    withSourcesJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/megargayu/jda-utils-arguments")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    api 'com.jagrosh:jda-utilities:3.0.5'
+    api 'net.dv8tion:JDA:4.2.0_225'
+}
