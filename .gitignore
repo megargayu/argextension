@@ -1,3 +1,6 @@
+# Ignore idea folder
+.idea/
+
 # Ignore Gradle project-specific cache directory
 .gradle
 
@@ -5,4 +8,4 @@
 build
 
 # Ignore config properties
-lib/main/src/main/resources/config.properties
+lib/src/main/resources/config.properties
