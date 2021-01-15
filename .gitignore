@@ -5,4 +5,4 @@
 build
 
 # Ignore config properties
-src/main/resources/config.properties
+lib/main/src/main/resources/config.properties
