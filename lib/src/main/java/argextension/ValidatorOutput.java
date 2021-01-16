@@ -1,4 +1,4 @@
-package jdautils_argextension;
+package argextension;
 
 public class ValidatorOutput {
     private final boolean isValid;

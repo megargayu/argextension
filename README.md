@@ -12,7 +12,7 @@ public class MyCommand extends Command {
     }
 }
 ```
-To add argument parsing to this, replace `Command` with `ArgumentCommand` and set the `requiredArguments` and `optionalArguments` variables!
+To add argument parsing to this, replace `Command` with `ArgumentCommand`, set the `requiredArguments` and `optionalArguments` variables, and add the `List<String> args` parameter to your execute function! Optional arguments are added after required arguments.
 ```java
 public class MyArgumentCommand extends ArgumentCommand {
     public MyArgumentCommand() {
@@ -24,6 +24,11 @@ public class MyArgumentCommand extends ArgumentCommand {
                     // Validator
                 })
         };
+    }
+
+    @Override
+    protected void execute(CommandEvent event, List<String> args) {
+        // execute - each arg in args corresponds to first required, and then optional arguments
     }
 }
 ```
@@ -45,6 +50,12 @@ public class MyNumberCommand extends ArgumentCommand {
         };
     }
 }
+```
+
+## Command Usage String
+There is a method in `Command` called "`getArguments()`". I have overridden this to generate a usage string in the following format:
+```text
+{required argument: type} ... [optional argument: type] ...
 ```
 
 ## Custom help consumer
