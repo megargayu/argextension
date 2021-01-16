@@ -1,4 +1,4 @@
-package argextension;
+package jdautils_argextension;
 
 /**
  * A validator for an {@link Argument}

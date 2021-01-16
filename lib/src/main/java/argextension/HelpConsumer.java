@@ -1,4 +1,4 @@
-package argextension;
+package jdautils_argextension;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
