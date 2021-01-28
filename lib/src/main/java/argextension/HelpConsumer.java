@@ -60,7 +60,7 @@ public class HelpConsumer implements Consumer<CommandEvent> {
                                 .append((i < command.getAliases().length - 1) ? ", " : "");
 
                     embedBuilder.addField(new MessageEmbed.Field(
-                            String.format("`%s%s%s`%s%s",
+                            String.format("`%s%s%s%s`%s",
                                     event.getClient().getTextualPrefix(),
                                     command.getName(),
                                     !aliases.toString().equals("") ? " (" + aliases.toString() + ")" : "",
