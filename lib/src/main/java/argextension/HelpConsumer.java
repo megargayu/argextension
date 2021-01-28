@@ -136,7 +136,7 @@ public class HelpConsumer implements Consumer<CommandEvent> {
                             Argument arg = argumentCmd.getOptionalArguments()[i];
                             optionalArgs.append("**`").append(arg.getName().toUpperCase()).append("`** ")
                                     .append((arg.getType() != null) ? "type: `" + arg.getType() + "`" :
-                                            "(no type specified")
+                                            "(no type specified)")
                                     .append("\n")
                                     .append((arg.getDescription() != null && arg.getDescription().length() > 0) ?
                                             arg.getDescription() : "No description found!")
