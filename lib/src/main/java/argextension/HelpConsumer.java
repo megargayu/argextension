@@ -45,7 +45,8 @@ public class HelpConsumer implements Consumer<CommandEvent> {
 
                             **Format:** `<command> (<aliases>)` `{<required argument>}` `[<optional argument>]`""")
                     .addField(new MessageEmbed.Field(
-                            "`" + event.getClient().getTextualPrefix() + "help [COMMAND]`",
+                            "`" + event.getClient().getTextualPrefix() + 
+                                    event.getClient().getHelpWord() + " [COMMAND]`",
                             "Displays help for this command", false))
                     .setAuthor(event.getSelfUser().getName(), event.getSelfUser().getAvatarUrl())
                     .setFooter(event.getSelfUser().getName(), event.getSelfUser().getAvatarUrl())
@@ -155,7 +156,7 @@ public class HelpConsumer implements Consumer<CommandEvent> {
 
             event.reply("Command '" + commandStr + "' not found!");
         } else {
-            event.reply("Invalid usage of 'help'!");
+            event.reply("Invalid usage of '" + event.getClient().getHelpWord() + "'!");
         }
     }
 }
