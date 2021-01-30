@@ -8,4 +8,4 @@
 build
 
 # Ignore config properties
-lib/src/main/resources/config.properties
+src/main/resources/config.properties
