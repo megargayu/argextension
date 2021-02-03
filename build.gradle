@@ -21,7 +21,7 @@ publishing {
     repositories {
         maven {
             name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/megargayu/jda-utils-arguments")
+            url = uri("https://maven.pkg.github.com/megargayu/argextension")
             credentials {
                 username = project.findProperty("gpr.user")
                 password = project.findProperty("gpr.key")
