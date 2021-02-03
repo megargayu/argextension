@@ -9,3 +9,6 @@ build
 
 # Ignore config properties
 src/main/resources/config.properties
+
+# Ignore iml file
+JDAUtilsArgExtension.iml
