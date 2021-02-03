@@ -1,4 +1,4 @@
-package argextension;
+package org.megargayu.argextension;
 
 public class ValidatorOutput {
     private final boolean isValid;

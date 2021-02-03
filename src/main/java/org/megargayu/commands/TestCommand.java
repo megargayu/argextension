@@ -1,8 +1,8 @@
-package commands;
+package org.megargayu.commands;
 
-import argextension.Argument;
-import argextension.ArgumentCommand;
-import argextension.ValidatorOutput;
+import org.megargayu.argextension.Argument;
+import org.megargayu.argextension.ArgumentCommand;
+import org.megargayu.argextension.ValidatorOutput;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
 import java.util.List;

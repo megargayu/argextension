@@ -1,9 +1,11 @@
-import argextension.HelpConsumer;
+package org.megargayu;
+
+import org.megargayu.argextension.HelpConsumer;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import com.jagrosh.jdautilities.examples.command.PingCommand;
 import com.jagrosh.jdautilities.examples.command.ShutdownCommand;
-import commands.TestCommand;
+import org.megargayu.commands.TestCommand;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 

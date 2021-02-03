@@ -1,6 +1,10 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
+
+group 'org.megargayu'
+version '1.1'
 
 repositories {
     jcenter()
@@ -11,4 +15,23 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.30'
     api 'com.jagrosh:jda-utilities:3.0.5'
     api 'net.dv8tion:JDA:4.2.0_225'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GithubPackages"
+            url = uri("https://maven.pkg.github.com/megargayu/jda-utils-arguments")
+            credentials {
+                username = project.findProperty("gpr.user")
+                password = project.findProperty("gpr.key")
+            }
+        }
+    }
+
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
 }

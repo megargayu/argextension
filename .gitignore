@@ -12,3 +12,6 @@ src/main/resources/config.properties
 
 # Ignore iml file
 JDAUtilsArgExtension.iml
+
+# Ignore gradle properties
+gradle.properties

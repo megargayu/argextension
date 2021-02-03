@@ -1,4 +1,4 @@
-package argextension;
+package org.megargayu.argextension;
 
 /**
  * A validator for an {@link Argument}

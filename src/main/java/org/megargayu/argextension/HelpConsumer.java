@@ -1,4 +1,4 @@
-package argextension;
+package org.megargayu.argextension;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -67,7 +67,7 @@ public class HelpConsumer implements Consumer<CommandEvent> {
                                     !aliases.toString().equals("") ? " (" + aliases + ")" : "",
                                     command.getArguments() != null ? " " + command.getArguments() : "",
                                     command.getCategory() != null ? " (`" + command.getCategory().getName() + "`)" : ""),
-                            // Capitalize first letter (inbuilt commands have lowercase first character)
+                            // Capitalize first letter (inbuilt org.megargayu.commands have lowercase first character)
                             command.getHelp().substring(0, 1).toUpperCase() + command.getHelp().substring(1),
                             false));
                 }

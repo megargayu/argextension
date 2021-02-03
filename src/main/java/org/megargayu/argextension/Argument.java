@@ -1,4 +1,4 @@
-package argextension;
+package org.megargayu.argextension;
 
 public class Argument {
     /**
