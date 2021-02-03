@@ -25,6 +25,20 @@ public abstract class ArgumentCommand extends Command {
     protected Argument[] optionalArguments;
 
     /**
+     * Add the last argument together? (For example, if you had an argument that could contain spaces
+     * at the end of your arguments, you wouldn't need to add quotes around them). Default is false
+     * <p>
+     * true:
+     * <pre>!mycommand "This is my first argument" This is my last argument</pre>
+     * <p>
+     * false:
+     * <pre>!mycommand "This is my first argument" "This is my last argument"</pre>
+     * <p>
+     * Note the absence of spaces when true
+     */
+    protected boolean addLastArgument = false;
+
+    /**
      * Split a string into it's arguments - split on spaces and quotes
      * <br>Thanks to <a href="https://stackoverflow.com/a/366532">this StackOverflow answer</a> and
      * <a href="https://stackoverflow.com/posts/comments/40428033">this StackOverflow comment</a> for this code
@@ -33,15 +47,21 @@ public abstract class ArgumentCommand extends Command {
      * @param arguments The un-parsed argument string
      * @return The resulting list of arguments
      */
-    public static List<String> splitArguments(String arguments) {
+    public List<String> splitArguments(String arguments) {
         List<String> split = new ArrayList<>();
         Pattern regex = Pattern.compile("\"([^\"]*)\"|'([^']*)'|[^\\s]+");
         Matcher regexMatcher = regex.matcher(arguments);
         while (regexMatcher.find()) {
+            if (addLastArgument && split.size() >= getRequiredArguments().length + getOptionalArguments().length) {
+                split.set(split.size() - 1, split.get(split.size() - 1) + " " + regexMatcher.group());
+                continue;
+            }
+
             if (regexMatcher.group(1) != null) split.add(regexMatcher.group(1)); // Double quotes
             else if (regexMatcher.group(2) != null) split.add(regexMatcher.group(2)); // Single quotes
             else split.add(regexMatcher.group()); // No quotes
         }
+
         return split;
     }
 
@@ -73,7 +93,7 @@ public abstract class ArgumentCommand extends Command {
         List<String> split = splitArguments(event.getArgs());
 
         // Proper usage string
-        String properUsage = "The proper usage would be: `" + event.getClient().getTextualPrefix() + 
+        String properUsage = "The proper usage would be: `" + event.getClient().getTextualPrefix() +
                 getName() + " " + getArguments() + "`";
 
         // No arguments provided but there are required arguments
@@ -82,20 +102,22 @@ public abstract class ArgumentCommand extends Command {
             return;
         }
 
-        // There are too less arguments provided to satisfy all required arguments
-        if (split.size() < getRequiredArguments().length) {
+        // There are too less arguments provided to satisfy all required arguments (if addLastArgument is true, there
+        // is no way this could be possible)
+        if (!addLastArgument && split.size() < getRequiredArguments().length) {
             StringBuilder requiredArgs = new StringBuilder();
             for (int i = split.size(); i < getRequiredArguments().length; i++) {
                 requiredArgs.append(getRequiredArguments()[i].getName())
                         .append(i < getRequiredArguments().length - 1 ? ", " : "");
             }
 
-            event.reply("You didn't provide the required arg(s) \"" + requiredArgs.toString() + "\"!\n" + properUsage);
+            event.reply("You didn't provide the required arg(s) \"" + requiredArgs + "\"!\n" + properUsage);
             return;
         }
 
-        // There are more provided arguments than all arguments that could be passed in
-        if (split.size() > getRequiredArguments().length + getOptionalArguments().length) {
+        // There are more provided arguments than all arguments that could be passed in (if addLastArgument is true,
+        // there is no way this could be possible)
+        if (!addLastArgument && split.size() > getRequiredArguments().length + getOptionalArguments().length) {
             event.reply("You provided too many arguments!\n" + properUsage);
             return;
         }
@@ -172,5 +194,6 @@ public abstract class ArgumentCommand extends Command {
                     .append("]");
             if (i < getOptionalArguments().length - 1) usageString.append(" ");
         }
-        return usageString.toString();    }
+        return usageString.toString();
+    }
 }

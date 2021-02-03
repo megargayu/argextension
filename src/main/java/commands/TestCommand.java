@@ -1,9 +1,9 @@
 package commands;
 
-import com.jagrosh.jdautilities.command.CommandEvent;
 import argextension.Argument;
 import argextension.ArgumentCommand;
 import argextension.ValidatorOutput;
+import com.jagrosh.jdautilities.command.CommandEvent;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class TestCommand extends ArgumentCommand {
         this.help = "a testing command";
         this.guildOnly = false;
         this.aliases = new String[]{"t"};
-        this.requiredArguments = new Argument[] {
+        this.requiredArguments = new Argument[]{
                 new Argument("number", "the test number", "number", value -> {
                     try {
                         Integer.parseInt(value);

@@ -45,7 +45,7 @@ public class HelpConsumer implements Consumer<CommandEvent> {
 
                             **Format:** `<command> (<aliases>)` `{<required argument>}` `[<optional argument>]`""")
                     .addField(new MessageEmbed.Field(
-                            "`" + event.getClient().getTextualPrefix() + 
+                            "`" + event.getClient().getTextualPrefix() +
                                     event.getClient().getHelpWord() + " [COMMAND]`",
                             "Displays help for this command", false))
                     .setAuthor(event.getSelfUser().getName(), event.getSelfUser().getAvatarUrl())
@@ -64,7 +64,7 @@ public class HelpConsumer implements Consumer<CommandEvent> {
                             String.format("`%s%s%s%s`%s",
                                     event.getClient().getTextualPrefix(),
                                     command.getName(),
-                                    !aliases.toString().equals("") ? " (" + aliases.toString() + ")" : "",
+                                    !aliases.toString().equals("") ? " (" + aliases + ")" : "",
                                     command.getArguments() != null ? " " + command.getArguments() : "",
                                     command.getCategory() != null ? " (`" + command.getCategory().getName() + "`)" : ""),
                             // Capitalize first letter (inbuilt commands have lowercase first character)
