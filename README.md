@@ -1,6 +1,6 @@
 
 ### This project has been archived in favor of slash commands. 
-Slash commands have been added to JDA (DV8FromTheWorld/JDA#1501), so this project has been archived in favor of those.
+Slash commands have been added to JDA ([issue](https://github.com/DV8FromTheWorld/JDA/pull/1501)), so this project has been archived in favor of those.
 [Read the docs](https://github.com/DV8FromTheWorld/JDA/wiki/Interactions) for more information on slash commands. You are free to fork and use this project as you wish!
 
 <hr>
